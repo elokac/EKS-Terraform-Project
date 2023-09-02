@@ -75,7 +75,7 @@ The project's folder structure is organized to maintain separation between infra
 ```
 
 1. ### docs
-   - #### Infra_diagram.png: 
+   - #### [Infra_diagram.png:] (https://github.com/elokac/EKS-Terraform-Project/blob/master/docs/Infra_diagram.png)
        A visual representation of the infrastructure diagram.
    - #### Infrastructure-setup.md: 
        Documentation explaining the overall infrastructure setup and architecture.
@@ -110,7 +110,7 @@ The project's folder structure is organized to maintain separation between infra
 - #### State Management: 
     The tfstate-store directory is vital as it contains the Terraform backend configuration responsible for storing state files. Ensure that this state store is set up correctly before provisioning any infrastructure using Terraform.
 
-#### - Documentation: 
+- #### Documentation: 
     The docs directory provides valuable documentation, including an infrastructure diagram, setup instructions, and an explanation of the architecture. Review and follow these documents for a comprehensive understanding of the infrastructure and the steps to reproduce it.
 
 By adhering to this structured folder arrangement, you can maintain a clear distinction between infrastructure provisioning and state management, making the project organized and easy to maintain.
