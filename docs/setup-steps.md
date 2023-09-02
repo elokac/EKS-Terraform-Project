@@ -42,9 +42,9 @@ terraform apply
 1. Wait for Terraform to finish provisioning the infrastructure. This may take several minutes.
 1. After successful provisioning, check the Terraform output for important information, such as instance IPs, endpoint URLs, and other relevant details.
 1. Access the infrastructure components as needed, following the documented architecture:
- - EKS Cluster: Access the EKS cluster from the Bastion Host or other trusted sources.
- - MySQL Database: Connect to the MySQL database securely via the Bastion Host or application instances.
- - Elastic Container Registry (ECR): Use ECR to store and manage Docker images.
+   - EKS Cluster: Access the EKS cluster from the Bastion Host or other trusted sources.
+   - MySQL Database: Connect to the MySQL database securely via the Bastion Host or application instances.
+   - Elastic Container Registry (ECR): Use ECR to store and manage Docker images.
 1. Verify the functionality and security of the infrastructure.
 
 ## Step 4: Cleanup (Optional)
