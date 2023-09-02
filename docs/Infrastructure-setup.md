@@ -76,9 +76,9 @@ The project's folder structure is organized to maintain separation between infra
 
 1. ### docs
    - #### [Infra_diagram.png](https://github.com/elokac/EKS-Terraform-Project/blob/master/docs/Infra_diagram.png):
-   A visual representation of the infrastructure diagram.
+       A visual representation of the infrastructure diagram.
    - #### Infrastructure-setup.md:
-Documentation explaining the overall infrastructure setup and architecture.
+       Documentation explaining the overall infrastructure setup and architecture.
    - #### [setup-steps.md](https://github.com/elokac/EKS-Terraform-Project/blob/master/docs/setup-steps.md): 
        Documentation outlining the step-by-step process to reproduce the infrastructure.
 1. ### tf-project
@@ -114,66 +114,3 @@ Documentation explaining the overall infrastructure setup and architecture.
     The docs directory provides valuable documentation, including an infrastructure diagram, setup instructions, and an explanation of the architecture. Review and follow these documents for a comprehensive understanding of the infrastructure and the steps to reproduce it.
 
 By adhering to this structured folder arrangement, you can maintain a clear distinction between infrastructure provisioning and state management, making the project organized and easy to maintain.
-
-#####################################
-Steps to Reproduce
-To reproduce this infrastructure setup, follow these steps:
-
-Prerequisites
-Before you begin, ensure you have the following prerequisites:
-
-AWS CLI: Install and configure the AWS Command Line Interface with appropriate credentials.
-Terraform: Install Terraform on your local machine.
-Clone the Repository
-Clone the GitHub repository to your local machine:
-
-bash
-Copy code
-git clone <repository_url>
-Navigate to the "tf-project" directory:
-
-bash
-Copy code
-cd tf-project
-Configure Terraform
-Initialize Terraform and download required providers:
-
-bash
-Copy code
-terraform init
-Create the Infrastructure
-Review and adjust variables in the variables.tf file if needed to match your requirements.
-
-Execute Terraform plan to view the changes that will be applied:
-
-bash
-Copy code
-terraform plan
-Apply the changes to create the infrastructure:
-
-bash
-Copy code
-terraform apply
-Terraform will prompt for confirmation before making any changes.
-
-Accessing the Infrastructure
-Once the Terraform apply is complete, the infrastructure will be provisioned on AWS.
-
-Access the AWS Management Console to view the created resources.
-
-Destroy the Infrastructure (Optional)
-To destroy the infrastructure and release AWS resources, run:
-
-bash
-Copy code
-terraform destroy
-Be cautious when using this command, as it will permanently delete resources.
-
-Additional Information
-Refer to the Terraform configuration files in the "tf-project" directory for details on resource definitions and configurations.
-
-The "tfstate-store" directory contains Terraform state files used to maintain the state of the infrastructure. Keep these files secure and do not commit them to version control.
-
-For any issues, refer to the Terraform documentation and AWS documentation for troubleshooting and further information.
-
-This documentation provides a high-level overview of the infrastructure setup and steps to reproduce it. Ensure you have a good understanding of AWS and Terraform before proceeding.
