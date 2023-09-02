@@ -76,10 +76,10 @@ The project's folder structure is organized to maintain separation between infra
 
 1. ### docs
    - #### [Infra_diagram.png](https://github.com/elokac/EKS-Terraform-Project/blob/master/docs/Infra_diagram.png):
-       A visual representation of the [infrastructure diagram](https://github.com/elokac/EKS-Terraform-Project/blob/master/docs/Infra_diagram.png).
+   A visual representation of the infrastructure diagram.
    - #### Infrastructure-setup.md:
-       Documentation explaining the overall infrastructure setup and architecture.
-   - #### setup-steps.md: 
+Documentation explaining the overall infrastructure setup and architecture.
+   - #### [setup-steps.md](https://github.com/elokac/EKS-Terraform-Project/blob/master/docs/setup-steps.md): 
        Documentation outlining the step-by-step process to reproduce the infrastructure.
 1. ### tf-project
 
