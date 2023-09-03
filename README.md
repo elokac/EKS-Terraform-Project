@@ -46,5 +46,6 @@ The `tfstate-store` folder contains the configuration for managing the Terraform
 
   - #### tfstate-store.tf: 
   Terraform configuration for setting up the remote state backend, including an S3 bucket and DynamoDB table.
-  
-This folder structure and its contents are organized to facilitate infrastructure provisioning, documentation, and state management using Terraform. Refer to the docs folder for detailed instructions on reproducing the infrastructure setup.
+
+This folder structure and its contents are organized to facilitate infrastructure provisioning, documentation, and state management using Terraform. 
+### [Refer to the docs folder for detailed instructions on reproducing the infrastructure setup](https://github.com/elokac/EKS-Terraform-Project/tree/master/docs).
