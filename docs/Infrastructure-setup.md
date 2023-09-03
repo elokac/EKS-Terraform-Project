@@ -62,7 +62,7 @@ The project's folder structure is organized to maintain separation between infra
 │   └── setup-steps.md
 ├── tf-project
 │   ├── 0-provider.tf
-│   ├── 1-vpc-test.tf
+│   ├── 1-vpc.tf
 │   ├── 2-eks-cluster.tf
 │   ├── 3-eks-worker.tf
 │   ├── 4-baston-host.tf
@@ -85,7 +85,7 @@ The project's folder structure is organized to maintain separation between infra
 
    - #### 0-provider.tf: 
        Terraform configuration file for provider settings and AWS configuration.
-   - #### 1-vpc-test.tf: 
+   - #### 1-vpc.tf: 
        Terraform configuration file for setting up the Amazon Virtual Private Cloud (VPC) and associated resources.
    - #### 2-eks-cluster.tf: 
        Terraform configuration file for creating the Amazon Elastic Kubernetes Service (EKS) cluster.

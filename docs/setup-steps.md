@@ -26,7 +26,7 @@ terraform apply
 terraform init
 ```
 1. Review and modify the `variables.tf` file to ensure all variables are correctly set, including the state store settings obtained from Step 1.
-Review and modify the Terraform configuration files (`1-vpc-test.tf`, `2-eks-cluster.tf`, `3-eks-worker.tf`, `4-baston-host.tf`, `5-db.tf`, `6-ecr.tf`) to match your desired infrastructure settings.
+Review and modify the Terraform configuration files (`1-vpc.tf`, `2-eks-cluster.tf`, `3-eks-worker.tf`, `4-baston-host.tf`, `5-db.tf`, `6-ecr.tf`) to match your desired infrastructure settings.
 1. Create an execution plan to preview the changes:
 ```
 terraform plan

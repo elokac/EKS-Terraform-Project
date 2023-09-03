@@ -2,7 +2,7 @@
 resource "aws_security_group" "bastion-sg" {
   name        = "bastion-sg"
   description = "Security group for the bastion host"
-  vpc_id      = aws_vpc.new-test.id
+  vpc_id      = aws_vpc.vpc.id
 
   # Allow SSH access (adjust the source IP as needed)
   ingress {

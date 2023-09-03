@@ -32,7 +32,7 @@ resource "aws_iam_role_policy_attachment" "amazon-ec2-container-registry-read-on
 resource "aws_security_group" "worker-node-sg" {
   name        = "worker-nodeSG"
   description = "Security group for all nodes in the cluster"
-  vpc_id      = aws_vpc.new-test.id
+  vpc_id      = aws_vpc.vpc.id
 
   egress {
     from_port   = 0

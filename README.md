@@ -17,7 +17,7 @@ The `tf-project` folder contains the Terraform configuration files for defining 
 - #### 0-provider.tf: 
 Terraform provider configuration for AWS.
 
-- #### 1-vpc-test.tf: 
+- #### 1-vpc.tf: 
 Configuration for setting up the Virtual Private Cloud (VPC) and its components.
 
 - #### 2-eks-cluster.tf: 

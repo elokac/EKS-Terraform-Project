@@ -1,7 +1,7 @@
 resource "aws_security_group" "db_security_group" {
   name        = "db_security_group"
   description = "Security group for the DB instance"
-  vpc_id      = aws_vpc.new-test.id
+  vpc_id      = aws_vpc.vpc.id
 
   # Define rules to allow access from your private subnet(s)
   ingress {
@@ -25,7 +25,7 @@ resource "aws_db_subnet_group" "mydb_subnet_group" {
 }
 
 
-resource "aws_db_instance" "mydb_instance" {
+resource "aws_db_instance" "prophius-db" {
   allocated_storage           = 20
   storage_type                = "gp2"
   engine                      = "mysql"
@@ -49,7 +49,7 @@ resource "aws_db_instance" "mydb_instance" {
   enabled_cloudwatch_logs_exports     = ["error", "general", "slowquery"]
   iam_database_authentication_enabled = true
   performance_insights_enabled        = false
-  monitoring_role_arn                 = aws_iam_role.test-IAM-Role-RDS.arn
+  monitoring_role_arn                 = aws_iam_role.IAM-Role-RDS.arn
 
   tags = {
     Name        = "${var.project}-DB"
@@ -61,8 +61,8 @@ resource "aws_db_instance" "mydb_instance" {
 }
 
 # IAM Role for RDS Enhanced Monitoring
-resource "aws_iam_role" "test-IAM-Role-RDS" {
-  name = "test-IAM-Role-RDS"
+resource "aws_iam_role" "IAM-Role-RDS" {
+  name = "IAM-Role-RDS"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17",
@@ -79,7 +79,7 @@ resource "aws_iam_role" "test-IAM-Role-RDS" {
   })
 
   tags = {
-    Name        = "test-IAM-Role-RDS"
+    Name        = "IAM-Role-RDS"
     project     = var.project
     createdby   = var.createdby
     environment = lookup(var.environment, terraform.workspace)
@@ -87,8 +87,8 @@ resource "aws_iam_role" "test-IAM-Role-RDS" {
   }
 }
 
-resource "aws_iam_policy_attachment" "test-IAM-Role-RDS-attachment" {
+resource "aws_iam_policy_attachment" "IAM-Role-RDS-attachment" {
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonRDSEnhancedMonitoringRole"
-  roles      = [aws_iam_role.test-IAM-Role-RDS.name]
+  roles      = [aws_iam_role.IAM-Role-RDS.name]
   name       = "Policy for cloudwatch logs"
 }

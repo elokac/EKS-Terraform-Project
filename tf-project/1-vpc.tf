@@ -1,4 +1,4 @@
-resource "aws_vpc" "new-test" {
+resource "aws_vpc" "vpc" {
   cidr_block = var.cidr
 
   enable_dns_hostnames = "true"
@@ -15,7 +15,7 @@ resource "aws_vpc" "new-test" {
 
 # Creating 1st web subnet 
 resource "aws_subnet" "public-subnet-1" {
-  vpc_id                  = aws_vpc.new-test.id
+  vpc_id                  = aws_vpc.vpc.id
   cidr_block              = var.public-subnet1_cidr
   map_public_ip_on_launch = true
   availability_zone       = "us-east-1a"
@@ -31,7 +31,7 @@ resource "aws_subnet" "public-subnet-1" {
 }
 # Creating 2nd web subnet 
 resource "aws_subnet" "public-subnet-2" {
-  vpc_id                  = aws_vpc.new-test.id
+  vpc_id                  = aws_vpc.vpc.id
   cidr_block              = var.public-subnet2_cidr
   map_public_ip_on_launch = true
   availability_zone       = "us-east-1b"
@@ -47,7 +47,7 @@ resource "aws_subnet" "public-subnet-2" {
 }
 # Creating 1st application subnet 
 resource "aws_subnet" "private-subnet-1" {
-  vpc_id                  = aws_vpc.new-test.id
+  vpc_id                  = aws_vpc.vpc.id
   cidr_block              = var.private-subnet1_cidr
   map_public_ip_on_launch = false
   availability_zone       = "us-east-1a"
@@ -63,7 +63,7 @@ resource "aws_subnet" "private-subnet-1" {
 }
 # Creating 2nd application subnet 
 resource "aws_subnet" "private-subnet-2" {
-  vpc_id                  = aws_vpc.new-test.id
+  vpc_id                  = aws_vpc.vpc.id
   cidr_block              = var.private-subnet2_cidr
   map_public_ip_on_launch = false
   availability_zone       = "us-east-1b"
@@ -79,7 +79,7 @@ resource "aws_subnet" "private-subnet-2" {
 }
 # Create Database Private Subnet
 resource "aws_subnet" "database-subnet1" {
-  vpc_id            = aws_vpc.new-test.id
+  vpc_id            = aws_vpc.vpc.id
   cidr_block        = var.db-subnet1_cidr
   availability_zone = "us-east-1a"
   tags = {
@@ -92,7 +92,7 @@ resource "aws_subnet" "database-subnet1" {
 }
 
 resource "aws_subnet" "database-subnet2" {
-  vpc_id            = aws_vpc.new-test.id
+  vpc_id            = aws_vpc.vpc.id
   cidr_block        = var.db-subnet2_cidr
   availability_zone = "us-east-1b"
   tags = {
@@ -106,7 +106,7 @@ resource "aws_subnet" "database-subnet2" {
 
 # Create a public subnet for the bastion host
 resource "aws_subnet" "bastion-subnet" {
-  vpc_id                  = aws_vpc.new-test.id
+  vpc_id                  = aws_vpc.vpc.id
   cidr_block              = var.bastion-subnet-cidr
   map_public_ip_on_launch = true
   availability_zone       = "us-east-1a"
@@ -121,7 +121,7 @@ resource "aws_subnet" "bastion-subnet" {
 
 # Creating Internet Gateway 
 resource "aws_internet_gateway" "I-gateway" {
-  vpc_id = aws_vpc.new-test.id
+  vpc_id = aws_vpc.vpc.id
 }
 
 resource "aws_eip" "nat-eip-1" {
@@ -183,7 +183,7 @@ resource "aws_nat_gateway" "nat-gw-2" {
 
 # Creating Route Table
 resource "aws_route_table" "public" {
-  vpc_id = aws_vpc.new-test.id
+  vpc_id = aws_vpc.vpc.id
   route {
     cidr_block = "0.0.0.0/0"
     gateway_id = aws_internet_gateway.I-gateway.id
@@ -198,7 +198,7 @@ resource "aws_route_table" "public" {
 }
 
 resource "aws_route_table" "private-1" {
-  vpc_id = aws_vpc.new-test.id
+  vpc_id = aws_vpc.vpc.id
 
   route {
     cidr_block     = "0.0.0.0/0"
@@ -215,7 +215,7 @@ resource "aws_route_table" "private-1" {
 }
 
 resource "aws_route_table" "private-2" {
-  vpc_id = aws_vpc.new-test.id
+  vpc_id = aws_vpc.vpc.id
 
   route {
     cidr_block     = "0.0.0.0/0"
