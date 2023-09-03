@@ -114,3 +114,50 @@ The project's folder structure is organized to maintain separation between infra
     The docs directory provides valuable documentation, including an infrastructure diagram, setup instructions, and an explanation of the architecture. Review and follow these documents for a comprehensive understanding of the infrastructure and the steps to reproduce it.
 
 By adhering to this structured folder arrangement, you can maintain a clear distinction between infrastructure provisioning and state management, making the project organized and easy to maintain.
+
+
+
+# Assumptions, Design Choices, and Additional Considerations
+
+1. ## Multi-Availability Zone (AZ) Deployment
+   #### Design Choice: 
+   The infrastructure is designed to be deployed across multiple Availability Zones (AZs) for high availability and fault tolerance. This choice ensures that if one AZ experiences an issue, the application can continue to operate from the other AZ.
+
+   #### Consideration: 
+   Although this design choice increases availability, it may result in higher infrastructure costs. However, it aligns with best practices for critical production workloads.
+
+2. ## Private Subnets for Databases
+   ### Design Choice: 
+   The MySQL database instances are deployed in private subnets, isolating them from direct internet access. This enhances security by reducing the database's exposure to potential threats.
+
+   #### Consideration: 
+   Access to the database is allowed through a Bastion Host for authorized users. This approach adds an additional layer of security but may require more complex access management.
+
+3. ## Bastion Host for Secure Access
+   #### Design Choice: 
+   A Bastion Host is implemented to provide secure access to resources in private subnets. Users must first access the Bastion Host and then use it as a jump server to reach other instances.
+
+   #### Consideration: 
+   While this design adds security, it also introduces an extra step for users accessing the application. Proper access control and monitoring on the Bastion Host are essential.
+
+4. ## Elastic Container Registry (ECR) for Docker Images
+   #### Design Choice: 
+   ECR is chosen as the private Docker image repository. This choice integrates seamlessly with Amazon EKS and enhances control over Docker image distribution.
+
+   #### Consideration: 
+   ECR simplifies image management but requires permissions configuration for EKS worker nodes to pull images.
+
+5. ## Kubernetes Cluster in Private Subnet
+   #### Design Choice: 
+   The Amazon EKS cluster is deployed in a private subnet to limit direct access to the cluster. Bastion Host is used for administrative access to the cluster.
+
+   #### Consideration: 
+   This choice improves security but necessitates a robust access control policy for cluster management.
+
+6. ## Load Balancer as Entry Point
+   #### Design Choice: 
+   The application is exposed to users through a Load Balancer (LB) in a public subnet, acting as the entry point. This design enhances scalability and distributes traffic evenly.
+
+   #### Consideration: 
+   Careful configuration and monitoring of the LB are crucial to ensure availability.
+
